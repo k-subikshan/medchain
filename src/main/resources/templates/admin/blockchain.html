@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin/base}">
+
+<head>
+
+    <title>Blockchain Ledger</title>
+
+</head>
+
+<body>
+
+    <h2 layout:fragment="page-title">
+        Blockchain Ledger
+    </h2>
+
+
+    <section layout:fragment="content">
+
+        <div class="hero">
+
+            <h1>
+                Blockchain Ledger ⛓️
+            </h1>
+
+            <p>
+                The application stores cryptographic hashes in a chained ledger
+                rather than sensitive healthcare records.
+            </p>
+
+        </div>
+
+
+        <div class="grid stats">
+
+            <div class="card stat">
+
+                <span class="label">
+                    Network
+                </span>
+
+                <div class="value">
+                    Local Ledger
+                </div>
+
+                <span class="trend">
+                    SHA-256 hash chained
+                </span>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <span class="label">
+                    Block Height
+                </span>
+
+                <div class="value" th:text="${#lists.size(blocks)}">0</div>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <span class="label">
+                    Transactions
+                </span>
+
+                <div class="value" th:text="${#lists.size(blocks)}">0</div>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <span class="label">
+                    Integrity
+                </span>
+
+                <div class="value" th:text="${integrity ? 'VALID' : 'BROKEN'}">VALID</div>
+
+                <span class="trend">Cryptographic chain integrity</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-head">
+
+            <h2>
+                Recent Ledger Entries
+            </h2>
+
+        </div>
+
+
+        <div class="card table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>TX Hash</th>
+                        <th>Record Type</th>
+                        <th>Block</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <tr th:each="block : ${blocks}">
+                        <td th:text="${block.blockHash}">hash</td>
+                        <td th:text="${block.recordType}">Medicine</td>
+                        <td th:text="${block.blockIndex}">1</td>
+                        <td><span class="badge ok">Hash recorded</span></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(blocks)}"><td colspan="4">No blockchain transactions yet.</td></tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

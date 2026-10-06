@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedChain | Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
+</head>
+<body class="login-page">
+<header class="login-top">
+    <a class="brand" href="index.html">
+        <span class="brand-mark">⛓</span>
+        <span>
+            <b>MedChain</b>
+            <small>MEDICINE TRACEABILITY</small>
+        </span>
+    </a>
+    <button class="btn btn-outline" onclick="location.href='admin/dashboard.html'">Admin Login</button>
+</header>
+<main class="login-wrap">
+    <section class="login-card">
+        <div class="login-brand">✚</div>
+        <h1>Welcome to <span>MedChain</span></h1>
+        <p name="error" th:if="${param.error}" class="error-message" style="color: red;">Invalid username or password.</p>
+        <form id="loginForm" th:method="post" th:action="@{/login}">
+            <label>
+                Username / ID
+                <input id="username" name="username" required placeholder="Enter your ID">
+            </label>
+            <label>
+                Password
+                <input id="password" name="password" type="password" required placeholder="Enter password">
+            </label>
+            <button class="btn btn-primary full" type="submit">Secure Login →</button>
+        </form>
+        <div class="security-note">🔐 Blockchain-backed integrity verification • Demo frontend</div>
+    </section>
+</main>
+<footer class="login-footer">
+    © 2026 MedChain • Secure Healthcare & Medicine Traceability
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

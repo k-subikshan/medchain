@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Doctor Dashboard | MedChain</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><div class="app"><aside class="sidebar"><div class="brand"><div class="logo">MC</div>MedChain</div>
+<nav class="nav"><a  th:href="@{dashboard}">Dashboard</a><a class="" th:href="@{prescriptions}">Prescriptions</a><a class="" th:href="@{pending-validations}">Pending Validations</a><a class="" th:href="@{patients}">Patients</a><a class="" th:href="@{create-prescription}">Create Prescription</a></nav><div class="profile"><div class="avatar">D</div><div><b>Doctor</b><small>Portal</small></div></div></aside>
+<main class="main"><header class="topbar"><div><button class="icon-btn menu-toggle" onclick="toggleMenu()">☰</button><h2>Doctor Dashboard</h2></div><div class="top-actions"><button class="icon-btn" onclick="toast('No new notifications')">🔔</button><div class="user-menu"><button class="user-btn" onclick="toggleUserMenu()"><div class="avatar">A</div><div class="usertext"><b>Doctor</b><small>Doctor Portal</small></div><span>⌄</span></button><div class="user-dropdown" id="userDropdown"><a th:href="@{dashboard}">👤 Profile</a><div class="dropdown-divider"></div><button onclick="logout()">↪ Logout</button></div></div></div></header>
+<section class="content" layout:fragment="content">
+    </section></main></div><div class="modal-bg"><div class="modal"></div></div><div class="toast"></div><script th:src="@{/js/script.js}"></script></body></html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title layout:title-pattern="$CONTENT_TITLE | MedChain">
+        MedChain
+    </title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="logo">
+                    MC
+                </div>
+
+                MedChain
+
+            </div>
+
+
+            <nav class="nav">
+
+                <a th:href="@{/admin/dashboard}">
+                    Dashboard
+                </a>
+
+                <a th:href="@{/admin/users}">
+                    Users
+                </a>
+
+                <a th:href="@{/admin/blockchain}">
+                    Blockchain Ledger
+                </a>
+
+                <a th:href="@{/admin/audit}">
+                    Audit History
+                </a>
+
+            </nav>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <b>
+                        Administrator
+                    </b>
+
+                    <small>
+                        Portal
+                    </small>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main -->
+
+        <main class="main">
+
+            <!-- Topbar -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <button class="icon-btn menu-toggle"
+                            onclick="toggleMenu()">
+                        ☰
+                    </button>
+
+                    <h2 layout:fragment="page-title">
+                        MedChain
+                    </h2>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <button class="icon-btn"
+                            onclick="toast('No new notifications')">
+                        🔔
+                    </button>
+
+
+                    <div class="user-menu">
+
+                        <button class="user-btn"
+                                onclick="toggleUserMenu()">
+
+                            <div class="avatar">
+                                A
+                            </div>
+
+                            <div class="usertext">
+
+                                <b>
+                                    Admin
+                                </b>
+
+                                <small>
+                                    Administrator
+                                </small>
+
+                            </div>
+
+                            <span>
+                                ⌄
+                            </span>
+
+                        </button>
+
+
+                        <div class="user-dropdown"
+                             id="userDropdown">
+
+                            <a th:href="@{/admin/dashboard}">
+                                👤 Profile
+                            </a>
+
+                            <a th:href="@{/admin/dashboard}">
+                                ⚙ Settings
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <form th:action="@{/logout}"
+                                  method="post">
+
+                                <button type="submit">
+                                    ↪ Logout
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page-specific content goes here -->
+
+            <section class="content"
+                     layout:fragment="content">
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Modal -->
+
+    <div class="modal-bg">
+
+        <div class="modal"></div>
+
+    </div>
+
+
+    <!-- Toast -->
+
+    <div class="toast"></div>
+
+
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+
+</html>
